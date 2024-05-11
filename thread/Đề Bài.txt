@@ -1,0 +1,11 @@
+Đồng bộ hóa quá trình mua vé trong một hệ thống bán vé
+
+Trong một hệ thống bán vé, quá trình mua vé cần được quản lý một cách an toàn và đồng bộ giữa nhiều khách hàng. Mỗi khách hàng cần đảm bảo rằng họ chỉ mua được số lượng vé có sẵn và tránh tình trạng mua vé trái phép hoặc đua đỉnh với khách hàng khác. Mục tiêu của đề bài là thiết kế một cơ chế đồng bộ hóa trong quá trình mua vé, giúp đảm bảo rằng mỗi giao dịch mua vé được thực hiện một cách an toàn và công bằng.
+
+Với điều này, chúng ta cần phải xây dựng một hệ thống quản lý quầy bán vé có khả năng:
+
+Theo dõi số lượng vé còn lại trong kho.
+Xử lý các yêu cầu mua vé từ nhiều khách hàng một cách an toàn và đồng bộ.
+Đảm bảo rằng mỗi khách hàng chỉ mua được số lượng vé có sẵn và tránh mua quá số lượng vé còn lại.
+Tránh tình trạng đua đỉnh khi nhiều khách hàng cùng thực hiện giao dịch mua vé.
+Cơ chế đồng bộ hóa cần phải đảm bảo tính nhất quán và công bằng trong quá trình mua vé, tạo ra một trải nghiệm mua vé trơn tru và công bằng cho tất cả khách hàng.
