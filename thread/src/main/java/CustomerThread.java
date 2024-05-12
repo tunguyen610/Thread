@@ -1,11 +1,11 @@
 package main.java;
 
-class Customer extends Thread {
+class CustomerThread extends Thread {
     private TicketCounter ticketCounter;
     private int quantity;
-
-    public Customer(TicketCounter ticketCounter, int quantity, String name) {
-        super(name);
+    String name;
+    public CustomerThread(TicketCounter ticketCounter, int quantity, String name) {
+        this.name = name;
         this.ticketCounter = ticketCounter;
         this.quantity = quantity;
     }
@@ -16,6 +16,6 @@ class Customer extends Thread {
         //ticketCounter.buyTickets(quantity);
 
         // Sử dụng synchronized
-        ticketCounter.synchronizedBuyTickets(quantity);
+        ticketCounter.synchronizedBuyTickets(quantity,name);
     }
 }
