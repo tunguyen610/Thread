@@ -1,4 +1,4 @@
-package main.java;
+package main.java.Synchronized;
 
 class CustomerThread extends Thread {
     private TicketCounter ticketCounter;

@@ -1,4 +1,4 @@
-package main.java;
+package main.java.Synchronized;
 
 class Main {
     public static void main(String[] args) {

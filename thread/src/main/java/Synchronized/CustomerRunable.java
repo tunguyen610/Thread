@@ -1,4 +1,4 @@
-package main.java;
+package main.java.Synchronized;
 
 public class CustomerRunable implements Runnable{
     private TicketCounter ticketCounter;
