@@ -1,17 +1,31 @@
 package main.java.Synchronized;
 
 class Main {
-    public static void main(String[] args) {
-        TicketCounter ticketCounter = new TicketCounter(3); // Số lượng vé ban đầu là 3
+    public static void main(String[] args) throws InterruptedException {
+        Log log = new Log();
+        TicketCounter ticketCounterAtomic = new TicketCounter(10000, log);
 
-        // Tạo và khởi chạy các khách hàng mua vé
-        CustomerThread customerThread1 = new CustomerThread(ticketCounter, 2, "Khách hàng 1");
-        CustomerThread customerThread2 = new CustomerThread(ticketCounter, 2, "Khách hàng 2");
-        CustomerRunable customerRunable1 = new CustomerRunable(ticketCounter, 2, "Khách hàng 3");
-        CustomerRunable customerRunable2 = new CustomerRunable(ticketCounter, 2, "Khách hàng 4");
-        customerThread1.start();
-        customerThread2.start();
-        customerRunable1.run();
-        customerRunable2.run();
+        Thread[] threads = new Thread[10000];
+        for (int i = 0; i < 10000; i++) {
+            threads[i] = new Thread(new CustomerThread(ticketCounterAtomic, 15, "Khách hàng " + (i + 1), log));
+        }
+
+        long startTime = System.nanoTime();
+        for (Thread thread : threads) {
+            thread.start();
+        }
+
+        for (Thread thread : threads) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        long endTime = System.nanoTime();
+        long duration = endTime - startTime;
+
+        System.out.println("Time taken Synchronized: " + duration + " nanoseconds.");
     }
 }

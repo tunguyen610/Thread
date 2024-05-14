@@ -1,10 +1,11 @@
 package main.java.Synchronized;
 
 class TicketCounter {
-    private int availableTickets;
-
-    public TicketCounter(int availableTickets) {
+    private volatile int availableTickets;
+    private Log log;
+    public TicketCounter(int availableTickets, Log log) {
         this.availableTickets = availableTickets;
+        this.log = log;
     }
 
     // Phương thức mua vé không sử dụng synchronized
@@ -13,7 +14,7 @@ class TicketCounter {
             System.out.println(name + " mua " + quantity + " vé.");
             availableTickets -= quantity;
         } else {
-            System.out.println(name + " không thể mua vé. Số vé còn lại: " + availableTickets);
+            log.writeLog(name + " không thể mua vé. Số vé còn lại: " + availableTickets);
         }
     }
 
@@ -23,7 +24,15 @@ class TicketCounter {
             System.out.println(name + " mua " + quantity + " vé.");
             availableTickets -= quantity;
         } else {
-            System.out.println(name + " không thể mua vé. Số vé còn lại: " + availableTickets);
+            log.writeLog(name + " không thể mua vé. Số vé còn lại: " + availableTickets);
         }
+    }
+
+    public int getTotalTickets() {
+        return availableTickets;
+    }
+
+    public synchronized void logTicketStatus() {
+        log.writeLog("Số vé còn lại: " + availableTickets);
     }
 }
