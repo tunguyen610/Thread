@@ -23,12 +23,13 @@ class CustomerThread extends Thread {
         //ticketCounter.synchronizedBuyTickets(quantity,name);
 
         // Deadlock
-        /* synchronized (log) {
+         synchronized (log) {
             log.writeLog(Thread.currentThread().getName() + " : " + name + " Bắt đầu mua vé");
-            ticketCounter.synchronizedBuyTickets(quantity);
-        }*/
-        /* synchronized (ticketCounter) {
+            ticketCounter.synchronizedBuyTickets(quantity,name);
+        }
+         synchronized (ticketCounter) {
+             System.out.println("đã lock log");
             ticketCounter.logTicketStatus();
-        }*/
+        }
     }
 }
